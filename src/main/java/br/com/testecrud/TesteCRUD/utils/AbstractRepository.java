@@ -22,4 +22,9 @@ public abstract class AbstractRepository {
 		return run.query(conn, sql, blh);
 	}
 
+	public int execute(String sql, Connection c) throws SQLException {
+		QueryRunner run = new QueryRunner();
+		return run.update(c, sql);
+	}
+
 }
