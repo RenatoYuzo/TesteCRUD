@@ -11,7 +11,7 @@ $ java -jar TesteCRUD.jar
 
 # Lista de end-points
 ### Requisições GET
-+ http://localhost:8080/testecrud/produtos/produtos/nome
++ http://localhost:8080/testecrud/produtos/nome
 + http://localhost:8080/testecrud/produtos/quantidade
 + http://localhost:8080/testecrud/produtos/maior-menor
 + http://localhost:8080/testecrud/produtos/categoria/{categoria_id}
