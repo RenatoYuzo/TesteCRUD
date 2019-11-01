@@ -44,4 +44,8 @@ public class ProdutoService {
 
 	}
 
+	public List<Produto> findProdutosPorCategoria(Integer categoria_id) {
+		return produtoRepo.findProdutosPorCategoria(categoria_id);
+	}
+
 }

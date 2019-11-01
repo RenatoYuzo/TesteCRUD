@@ -65,4 +65,13 @@ public class GetController {
 		return produtoService.findMaiorMenorQtdProduto();
 	}
 
+	/**
+	 * 5 - Listar todos os produtos por categoria, a categoria será definida pelo usuário.
+	 * 
+	 */
+	@GetMapping(path = "/produtos/categoria/{categoria_id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Produto> findProdutosPorCategoria(@PathVariable Integer categoria_id) {
+		return produtoService.findProdutosPorCategoria(categoria_id);
+	}
+
 }

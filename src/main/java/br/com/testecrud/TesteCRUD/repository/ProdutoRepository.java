@@ -99,9 +99,10 @@ public class ProdutoRepository extends AbstractRepository {
 
 		try {
 			StringBuilder sql = new StringBuilder();
-			sql.append(" select top 1 * from Produto order by qtd_estoque asc \n");
+
+			sql.append(" (SELECT * FROM produto order by qtd_estoque desc LIMIT 1) \n");
 			sql.append(" union \n");
-			sql.append(" select top 1 * from Produto order by qtd_estoque desc \n");
+			sql.append(" (SELECT * FROM produto order by qtd_estoque asc LIMIT 1) \n");
 
 			List<Produto> listaProdutos = executeQueryListResult(sql.toString(), conn, Produto.class);
 			return listaProdutos;
@@ -126,6 +127,24 @@ public class ProdutoRepository extends AbstractRepository {
 		} catch (SQLException e) {
 			System.err.println("Erro ProdutoRepository[06]: " + e.getMessage());
 			return -1;
+		}
+
+	}
+
+	/**
+	 * Este metodo busca todos os produtos por categoria
+	 * 
+	 * @param categoria_id Identificador da categoria
+	 */
+	public List<Produto> findProdutosPorCategoria(Integer categoria_id) {
+
+		try {
+			String sql = " select * from Produto where categoria_id=" + categoria_id;
+			List<Produto> listaProdutos = executeQueryListResult(sql.toString(), conn, Produto.class);
+			return listaProdutos;
+		} catch (SQLException e) {
+			System.err.println("Erro ProdutoRepository[07]: " + e.getMessage());
+			return null;
 		}
 
 	}
